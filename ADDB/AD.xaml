@@ -6,12 +6,8 @@
       xmlns:local="clr-namespace:ADDB"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-        Title="Объявления" Height="600" Width="900">
-    <Window>
-    <Window.Resources>
-        <!-- Подключение стилей -->
-        <ResourceDictionary Source="Dictionary.xaml"/>
-    </Window.Resources>
+      Title="Объявления" Height="600" Width="900">
+    
 
     <Grid Background="White">
         <!-- Логотип приложения -->
@@ -20,28 +16,21 @@
         <!-- Заголовок -->
         <TextBlock Text="Частные Объявления" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,13,0,0" FontSize="21" Height="30" Width="210"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,136,0,0">
-                <TextBox x:Name="SearchTextBox" Width="200" TextChanged="SearchTextBox_TextChanged"/>
-                <ComboBox x:Name="CityFilter" Width="100" SelectionChanged="CityFilter_SelectionChanged">
-                    <ComboBoxItem Content="Все города"/>
-                </ComboBox>
-                <ComboBox x:Name="CategoryComboBox" Width="100" SelectionChanged="CategoryComboBox_SelectionChanged" DisplayMemberPath="Name" SelectedValuePath="CategoryID">
-                    <ComboBoxItem Content="Все категории"/>
-                </ComboBox>
-                <ComboBox x:Name="StatusFilter" Width="100" SelectionChanged="StatusFilter_SelectionChanged">
-                    <ComboBoxItem Content="Все статусы"/>
-                </ComboBox>
-            </StackPanel>
-
-            <!-- Список объявлений -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,136,0,0">
+            <TextBox x:Name="SearchTextBox" Width="200" TextChanged="SearchTextBox_TextChanged" />
+            <ComboBox x:Name="CityFilter" Width="100" SelectionChanged="CityFilter_SelectionChanged" DisplayMemberPath="Name" SelectedValuePath="CityID"/>
+            <ComboBox x:Name="CategoryComboBox" Width="100" SelectionChanged="CategoryComboBox_SelectionChanged" DisplayMemberPath="Name" SelectedValuePath="CategoryID"/>
+            <ComboBox x:Name="StatusFilter" Width="100" SelectionChanged="StatusFilter_SelectionChanged" DisplayMemberPath="Name" SelectedValuePath="TypeID"/>
+        </StackPanel>
+        <!-- Список объявлений -->
         <ListBox Name="ADListBox" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="16,250,16,10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Text="{Binding Title}" />
-                        <TextBlock Text="{Binding City}"/>
-                        <TextBlock Text="{Binding Category}"/>
-                        <TextBlock Text="{Binding Status}"/>
+                        <TextBlock Text="{Binding City.Name}"/>
+                        <TextBlock Text="{Binding AdCategory.Name}"/>
+                        <TextBlock Text="{Binding StatusType.Name}"/>
                         <Image Source="{Binding ImagePath}" Height="150" Width="200"/>
                     </StackPanel>
                 </DataTemplate>
@@ -53,5 +42,4 @@
                 <RadioButton x:Name="finishedRb" Content="Завершено" GroupName="Status" Checked="RadioButton_Checked"/>
             </StackPanel>
         </Grid>
-    </Window>
     </Page>

@@ -9,10 +9,11 @@ namespace ADDB
     {
         public AD()
         {
+            InitializeComponent();
             CategoryComboBox.ItemsSource = Entities.GetContext().AdCategory.ToList();
             CityFilter.ItemsSource = Entities.GetContext().City.ToList();
             StatusFilter.ItemsSource = Entities.GetContext().AdType.ToList();
-            UpdateAds(); // Начальная загрузка объявлений
+            UpdateAds(); 
         }
 
         private void UpdateAds()

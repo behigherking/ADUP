@@ -38,6 +38,7 @@ namespace ADDB
         public virtual DbSet<Advertisement> Advertisement { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<StatusType> StatusType { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }
