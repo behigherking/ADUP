@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7edf853d1ec341f9bc785456417d982d" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AdCategory" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AdType" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Advertisement" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.City" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.StatusType" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Advertise__Categ__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Advertise__TypeI__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Advertise__CityI__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Advertise__Statu__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Advertise__UserI__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
