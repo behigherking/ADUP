@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
             <TextBlock   VerticalAlignment="Center" FontSize="14"  >
-                <Hyperlink x:Name="authHyperLink" Click="authHyperLink_Click">Войти </Hyperlink>
+                <Hyperlink x:Name="Auth" Click="Auth_Click">Войти </Hyperlink>
             </TextBlock>
             <Image Grid.Row="0" Source="/Photo/logo.png" Height="35" VerticalAlignment="Center"/>
 

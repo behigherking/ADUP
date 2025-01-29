@@ -4,49 +4,49 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AdServiceModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="AdType">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
-          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Advertisement">
           <Key>
             <PropertyRef Name="AdID" />
           </Key>
-          <Property Name="AdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="PublicationDate" Type="datetime" />
-          <Property Name="CityID" Type="int" />
-          <Property Name="CategoryID" Type="int" />
-          <Property Name="TypeID" Type="int" />
-          <Property Name="StatusID" Type="int" />
+          <Property Name="PublicationDate" Type="datetime" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Photo" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityID" />
           </Key>
-          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusType">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
-          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -63,12 +63,13 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Profit" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Advertise__Categ__4316F928">
-          <End Role="AdCategory" Type="Self.AdCategory" Multiplicity="0..1" />
+        <Association Name="FK__Advertise__Categ__4222D4EF">
+          <End Role="AdCategory" Type="Self.AdCategory" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdCategory">
@@ -79,8 +80,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Advertise__CityI__4222D4EF">
-          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+        <Association Name="FK__Advertise__CityI__4316F928">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
@@ -92,7 +93,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Advertise__Statu__44FF419A">
-          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StatusType">
@@ -104,7 +105,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Advertise__TypeI__440B1D61">
-          <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
+          <End Role="AdType" Type="Self.AdType" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdType">
@@ -127,7 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище AdServiceModelContainer">
+        <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="AdCategory" EntityType="Self.AdCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdType" EntityType="Self.AdType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
@@ -135,11 +136,11 @@
           <EntitySet Name="StatusType" EntityType="Self.StatusType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Advertise__Categ__4316F928" Association="Self.FK__Advertise__Categ__4316F928">
+          <AssociationSet Name="FK__Advertise__Categ__4222D4EF" Association="Self.FK__Advertise__Categ__4222D4EF">
             <End Role="AdCategory" EntitySet="AdCategory" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
-          <AssociationSet Name="FK__Advertise__CityI__4222D4EF" Association="Self.FK__Advertise__CityI__4222D4EF">
+          <AssociationSet Name="FK__Advertise__CityI__4316F928" Association="Self.FK__Advertise__CityI__4316F928">
             <End Role="City" EntitySet="City" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
@@ -160,20 +161,20 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AdServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AdCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__Categ__4316F928" FromRole="AdCategory" ToRole="Advertisement" />
+          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__Categ__4222D4EF" FromRole="AdCategory" ToRole="Advertisement" />
         </EntityType>
         <EntityType Name="AdType">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
-          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__TypeI__440B1D61" FromRole="AdType" ToRole="Advertisement" />
         </EntityType>
@@ -181,20 +182,20 @@
           <Key>
             <PropertyRef Name="AdID" />
           </Key>
-          <Property Name="AdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="PublicationDate" Type="DateTime" Precision="3" />
-          <Property Name="CityID" Type="Int32" />
-          <Property Name="CategoryID" Type="Int32" />
-          <Property Name="TypeID" Type="Int32" />
-          <Property Name="StatusID" Type="Int32" />
+          <Property Name="PublicationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AdCategory" Relationship="Self.FK__Advertise__Categ__4316F928" FromRole="Advertisement" ToRole="AdCategory" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AdCategory" Relationship="Self.FK__Advertise__Categ__4222D4EF" FromRole="Advertisement" ToRole="AdCategory" />
           <NavigationProperty Name="AdType" Relationship="Self.FK__Advertise__TypeI__440B1D61" FromRole="Advertisement" ToRole="AdType" />
-          <NavigationProperty Name="City" Relationship="Self.FK__Advertise__CityI__4222D4EF" FromRole="Advertisement" ToRole="City" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Advertise__CityI__4316F928" FromRole="Advertisement" ToRole="City" />
           <NavigationProperty Name="StatusType" Relationship="Self.FK__Advertise__Statu__44FF419A" FromRole="Advertisement" ToRole="StatusType" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Advertise__UserI__412EB0B6" FromRole="Advertisement" ToRole="Users" />
         </EntityType>
@@ -202,15 +203,15 @@
           <Key>
             <PropertyRef Name="CityID" />
           </Key>
-          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__CityI__4222D4EF" FromRole="City" ToRole="Advertisement" />
+          <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__CityI__4316F928" FromRole="City" ToRole="Advertisement" />
         </EntityType>
         <EntityType Name="StatusType">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
-          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__Statu__44FF419A" FromRole="StatusType" ToRole="Advertisement" />
         </EntityType>
@@ -228,13 +229,14 @@
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Profit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Advertisement" Relationship="Self.FK__Advertise__UserI__412EB0B6" FromRole="Users" ToRole="Advertisement" />
         </EntityType>
-        <Association Name="FK__Advertise__Categ__4316F928">
-          <End Role="AdCategory" Type="Self.AdCategory" Multiplicity="0..1" />
+        <Association Name="FK__Advertise__Categ__4222D4EF">
+          <End Role="AdCategory" Type="Self.AdCategory" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdCategory">
@@ -246,7 +248,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Advertise__TypeI__440B1D61">
-          <End Role="AdType" Type="Self.AdType" Multiplicity="0..1" />
+          <End Role="AdType" Type="Self.AdType" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AdType">
@@ -257,8 +259,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Advertise__CityI__4222D4EF">
-          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+        <Association Name="FK__Advertise__CityI__4316F928">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
@@ -270,7 +272,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Advertise__Statu__44FF419A">
-          <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+          <End Role="StatusType" Type="Self.StatusType" Multiplicity="1" />
           <End Role="Advertisement" Type="Self.Advertisement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StatusType">
@@ -301,7 +303,7 @@
           <EntitySet Name="StatusType" EntityType="Self.StatusType" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Advertise__Categ__4316F928" Association="Self.FK__Advertise__Categ__4316F928">
+          <AssociationSet Name="FK__Advertise__Categ__4222D4EF" Association="Self.FK__Advertise__Categ__4222D4EF">
             <End Role="AdCategory" EntitySet="AdCategory" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
@@ -309,7 +311,7 @@
             <End Role="AdType" EntitySet="AdType" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
-          <AssociationSet Name="FK__Advertise__CityI__4222D4EF" Association="Self.FK__Advertise__CityI__4222D4EF">
+          <AssociationSet Name="FK__Advertise__CityI__4316F928" Association="Self.FK__Advertise__CityI__4316F928">
             <End Role="City" EntitySet="City" />
             <End Role="Advertisement" EntitySet="Advertisement" />
           </AssociationSet>
@@ -327,9 +329,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище AdServiceModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="AdCategory">
-            <EntityTypeMapping TypeName="AdServiceModel.AdCategory">
+            <EntityTypeMapping TypeName="Model.AdCategory">
               <MappingFragment StoreEntitySet="AdCategory">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -337,7 +339,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AdType">
-            <EntityTypeMapping TypeName="AdServiceModel.AdType">
+            <EntityTypeMapping TypeName="Model.AdType">
               <MappingFragment StoreEntitySet="AdType">
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -345,13 +347,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Advertisement">
-            <EntityTypeMapping TypeName="AdServiceModel.Advertisement">
+            <EntityTypeMapping TypeName="Model.Advertisement">
               <MappingFragment StoreEntitySet="Advertisement">
                 <ScalarProperty Name="AdID" ColumnName="AdID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -362,7 +364,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="AdServiceModel.City">
+            <EntityTypeMapping TypeName="Model.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -370,7 +372,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StatusType">
-            <EntityTypeMapping TypeName="AdServiceModel.StatusType">
+            <EntityTypeMapping TypeName="Model.StatusType">
               <MappingFragment StoreEntitySet="StatusType">
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -378,7 +380,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="AdServiceModel.sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -389,11 +391,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="AdServiceModel.Users">
+            <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

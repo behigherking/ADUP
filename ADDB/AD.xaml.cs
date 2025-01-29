@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ADDB
 {
@@ -57,7 +58,7 @@ namespace ADDB
                 currentAds = currentAds.Where(p => p.StatusID == 2).ToList();
             }
 
-            ADListBox.ItemsSource = currentAds; // Привязка данных к ListBox
+            ADList.ItemsSource = currentAds; // Привязка данных к ListBox
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,6 +84,22 @@ namespace ADDB
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             UpdateAds();
+        }
+        private void clearButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Text = "";
+            CategoryComboBox.SelectedValue = null;
+            CityFilter.SelectedValue = null;
+            StatusFilter.SelectedValue = null;
+            activeRb.IsChecked = true;
+        }
+        private void ADList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedAd = (Advertisement)ADList.SelectedItem;
+            if (selectedAd != null)
+            {
+                NavigationService.Navigate(new EditAdPage(selectedAd));
+            }
         }
     }
 }

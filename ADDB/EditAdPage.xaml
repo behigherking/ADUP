@@ -1,0 +1,45 @@
+﻿<Page x:Class="ADDB.EditAdPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ADDB"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Редактирование объявления">
+
+    <Grid>
+        <TextBlock Text="Редактирование объявления" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Vertical" Margin="20">
+            <TextBlock Text="Заголовок:"/>
+            <TextBox x:Name="TitleTextBox" Width="300"/>
+
+            <TextBlock Text="Город:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="CityComboBox" Width="300" SelectedValuePath="CityID" DisplayMemberPath="Name"/>
+
+            <TextBlock Text="Категория:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="CategoryComboBox" Width="300" SelectedValuePath="CategoryID" DisplayMemberPath="Name"/>
+
+            <TextBlock Text="Цена:" Margin="0,10,0,0"/>
+            <TextBox x:Name="PriceTextBox" Width="300"/>
+
+            <TextBlock Text="Описание:" Margin="0,10,0,0"/>
+            <TextBox x:Name="DescriptionTextBox" Width="300" Height="100" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <TextBlock Text="Изображение:" Margin="0,10,0,0"/>
+            <TextBox x:Name="ImageTextBox" Width="300" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Статус:"/>
+                <ComboBox x:Name="StatusComboBox" SelectedValuePath="TypeID" DisplayMemberPath="Name"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button x:Name="SaveButton" Content="Сохранить" Width="100" Click="SaveButton_Click"/>
+                <Button x:Name="CancelButton" Content="Отмена" Width="100" Margin="10,0,0,0" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>

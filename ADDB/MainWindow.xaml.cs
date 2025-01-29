@@ -25,7 +25,7 @@ namespace ADDB
             InitializeComponent();
         }
 
-        private void authHyperLink_Click(object sender, RoutedEventArgs e)
+        private void Auth_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Login());
         }
