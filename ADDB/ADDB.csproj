@@ -187,6 +187,13 @@
     <Resource Include="Photo\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Photo\квартира.png" />
+    <Resource Include="Photo\машина.png" />
+    <Resource Include="Photo\ноутбук.png" />
+    <Resource Include="Photo\стол.png" />
+    <Resource Include="Photo\демид.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -197,11 +204,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Resource Include="Photo\квартира.png" />
-    <Resource Include="Photo\машина.png" />
-    <Resource Include="Photo\ноутбук.png" />
-    <Resource Include="Photo\стол.png" />
-    <Resource Include="Photo\демид.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

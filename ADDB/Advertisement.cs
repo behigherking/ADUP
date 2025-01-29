@@ -16,14 +16,14 @@ namespace ADDB
     {
         public int AdID { get; set; }
         public int UserID { get; set; }
-        public System.DateTime PublicationDate { get; set; }
-        public int CategoryID { get; set; }
-        public int CityID { get; set; }
-        public int TypeID { get; set; }
-        public int StatusID { get; set; }
+        public Nullable<System.DateTime> PublicationDate { get; set; }
+        public Nullable<int> CityID { get; set; }
+        public Nullable<int> CategoryID { get; set; }
+        public Nullable<int> TypeID { get; set; }
+        public Nullable<int> StatusID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public string Photo { get; set; }
     
         public virtual AdCategory AdCategory { get; set; }
